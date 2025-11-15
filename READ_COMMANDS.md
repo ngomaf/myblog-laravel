@@ -11,69 +11,105 @@ php artisan key:generate
 ```
 
 1. List all commands artisan
+```
 php artisan list
+```
 
-1a. List routes
+2. List routes
+```
 php artisan route:list
+```
 
-2. Down app
+3. Down app
+```
 php artisan down
+```
 
-3. Up app
+4. Up app
+```
 php artisan up
+```
 
-4. Get help about command
+5. Get help about command
+```
 php artisan help migrate
+```
 
-5. Create controller
+6. Create controller
+```
 php artisan make:controller ClientController
+```
 
-6. Create controller with resource
+7. Create controller with resource
+```
 php artisan make:controller ClientController --resource
+```
 
-7. Up migrate
+8. Up migrate
+```
 php artisan migrate
+```
 
-8. 
+9. 
+```
 php artisan migrate:rollback
+```
 
-9. show migration status
+10. show migration status
+```
 php artisan migrate:status
+```
 
-10. create migration
+11. create migration
+```
 php artisan make:migration create_photos_table
-or
+// or
 php artisan make:migration --create=photos
+```
 
-11. alterate table
-*create new migration*
+12. alterate table
+```
+// create new migration
 php artisan make:migration alter_table_name_photos
-*in function up write*
+// in function up write
 Schema::rename('partner', 'partners');
+```
 
-12. drop table
+13. drop table
+```
 php artisan make:migration drop_table_myphotos
-*in function up write*
+// in function up write
 Schema::dropIfExists('photos');
+```
 
-13. create model controller end migration with one commad
+14. create model controller end migration with one commad
+```
 php artisan make:model Category --migration --controller --resource
-or
+// or
 php artisan make:model Category -m -cr
-or
+// or
 php artisan make:model Category -mcr
+```
 
-14. create seeder
+15. create seeder
+```
 php artisan make:seeder UsersSeeder
+```
 
-15. run seeder
+16. run seeder
+```
 php artisan db:seed
+```
 
-16. create factory
+17. create factory
+```
 php artisan make:factory CategoryFactory
+```
 
-17. create model migrate factory seeder ctrl resource with one command
+18. create model migrate factory seeder ctrl resource with one command
+```
 php artisan make:model Test -mfscr
+```
 
 
 
@@ -168,16 +204,21 @@ Route::resource('/client', ClientController::class);
 # views
 
 ## layout
+```
 @yield('content')
+```
 
 ## single view
+```
 @extends('site.layout')
 @section('title', 'Home page')
 @section('content')
     html tags
 @endsection
+```
 
 ## estruture
+```
 @if ($name)
 @endif 
 
@@ -223,3 +264,4 @@ Route::resource('/client', ClientController::class);
 @endforeach
 
 @include('path.file', ['message'=>'Message here.'])
+```
