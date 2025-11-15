@@ -475,6 +475,94 @@ foreach ($students as $student) {
 
 
 
+Aqui vai um exemplo **simples e direto** usando `DB::table` para **selecionar apenas um post** com o **autor** e a **categoria**.
+
+Vou assumir a estrutura comum:
+
+* **posts**
+
+  * id
+  * title
+  * content
+  * user_id
+  * category_id
+
+* **users**
+
+  * id
+  * name
+
+* **categories**
+
+  * id
+  * name
+
+---
+
+# ✅ Selecionar **um único post** + **autor** + **categoria** (com DB::table)
+
+```php
+use Illuminate\Support\Facades\DB;
+
+$post = DB::table('posts')
+    ->join('users', 'posts.user_id', '=', 'users.id')
+    ->join('categories', 'posts.category_id', '=', 'categories.id')
+    ->select(
+        'posts.*',
+        'users.name as author',
+        'categories.name as category'
+    )
+    ->where('posts.id', $postId)   // ID do post que você quer
+    ->first();                     // PEGA APENAS 1 REGISTRO
+
+dd($post);
+```
+
+---
+
+# 📌 O que o código faz?
+
+✔ Une as 3 tabelas:
+
+* posts
+* users (autor)
+* categories
+
+✔ Seleciona **um único resultado** usando `->first()`
+✔ Renomeia colunas para facilitar:
+
+* `users.name` vira `author`
+* `categories.name` vira `category`
+
+---
+
+# 🎯 Exemplo de uso
+
+```php
+$postId = 5;
+
+$post = DB::table('posts')
+    ->join('users', 'posts.user_id', '=', 'users.id')
+    ->join('categories', 'posts.category_id', '=', 'categories.id')
+    ->select('posts.title', 'posts.content', 'users.name as author', 'categories.name as category')
+    ->where('posts.id', $postId)
+    ->first();
+
+echo $post->title;
+echo $post->author;
+echo $post->category;
+```
+
+---
+
+# ❗ Quer incluir mais dados como tags, comentários, imagem etc?
+
+É só pedir que monto a query completa.
+
+
+
+
+
 
 
 
