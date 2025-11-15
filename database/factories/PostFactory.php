@@ -19,16 +19,44 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = $this->faker->unique()->paragraph();
+        $title = $this->faker->unique()->sentence();
 
         return [
             'title' => $title,
             'slug' => Str::slug($title),
             'state' => 1,
-            'content' => $this->faker->text,
+            'content' => $this->generateHtmlContent(),
+            // 'content' => $this->text,
             'views' => $this->faker->randomNumber(5),
             'id_user' => User::pluck('id')->random(),
             'id_category' => Category::pluck('id')->random()
         ];
     }
+
+    private function generateHtmlContent()
+    {
+        $html = "";
+
+        // Criar 3 seções
+        for ($i = 0; $i < 2; $i++) {
+            $html .= "<h2>" . $this->faker->sentence() . "</h2>";
+            $html .= "<p>" . $this->faker->text . "</p>";
+            $html .= "<p>" . $this->faker->text . "</p>";
+
+            $html .= "<h3>" . $this->faker->sentence() . "</h3>";
+            $html .= "<ul>";
+
+            for ($j = 0; $j < 4; $j++) {
+                $html .= "<li>" . $this->faker->paragraph() . "</li>";
+            }
+
+            $html .= "</ul>";
+            $html .= "<p>" . $this->faker->paragraph(3) . "</p>";
+            $html .= "<p>" . $this->faker->text . "</p>";
+            $html .= "<p>" . $this->faker->text . "</p>";
+        }
+
+        return $html;
+    }
+
 }

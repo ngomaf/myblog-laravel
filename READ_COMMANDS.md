@@ -120,7 +120,7 @@ Route::get("/", function() {
 });
 
 // or
-Route::view("/", "path/viewname.blade.php");
+Route::view("/", "path/viewname");
 
 Route::any("/any", function() {
     return "Permite todo tipo de acesso http (get, post, put, patch, delete).";

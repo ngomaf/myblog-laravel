@@ -12,66 +12,31 @@
             <div class="recents">
                 @foreach ($posts4 as $post)
                     <article>
-                        <a href="/{{ $post->slug }}"><h1>{{ \Illuminate\Support\Str::limit($post->title, 50) }}</h1></a>
-                        <p><span>by</span> <a class="link-default" href="/autor/{{ $post->user_id }}">{{ $post->firstName }}</a> | {{ date('d.m.Y', strtotime($post->created_at)) }} | {{ number_format($post->views, 0, ',', '.') }} views</p>
-                        <a href="/{{ $post->slug }}"><p>{{ $post->title }}.</p></a>
+                        @php 
+                            $created_at = \Carbon\Carbon::parse($post->created_at)->format('d M Y');
+                            $content = strip_tags($post->content);
+                        @endphp
+                        <a href="/{{ $post->slug }}"><h1>{{ $post->title }}</h1></a>
+                        <p><span>by</span> <a class="link-default" href="/autor/{{ $post->user_id }}">{{ $post->firstName }}</a> | {{ $created_at }} | {{ number_format($post->views, 0, ',', '.') }} views</p>
+                        <a href="/{{ $post->slug }}"><p>{{ \Illuminate\Support\Str::limit($content, 100, ' ...') }}</p></a>
                     </article>
                 @endforeach
-            </div>
-            <div class="others">
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <h1>Titulo do artigo</h1>
-                        <p><span>T</span> 2 horas de leitura | 20 Set 2025</p>
-                    </a>
-                </article>
             </div>
         </section>
 
         <section id="categories">
             <h2>Categorias</h2>
+
+            <ul>
+                @foreach ($categories as $category)
+                    <li>
+                    <a href="/categoria/{{ $category->slug }}">
+                        <h3>{{ ucfirst($category->name) }}</h3>
+                        <p>{{ $category->description }}</p>
+                    </a>
+                    </li>
+                @endforeach
+            </ul>
         </section>
 
         <section id="photos">

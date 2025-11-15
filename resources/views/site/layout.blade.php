@@ -10,6 +10,7 @@
         *{margin: 0; padding: 0; box-sizing: border-box;}
         body {padding: 20px 50px 50px; line-height: 30px; color: #333; font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;}
         h1, h2 {margin: 25px 0 10px;}
+        h3 {margin: 20px 0 8px;}
         p, li {margin-bottom: 10px}
         a, .link-default {color: #00defb}
         a:hover, .link-default:hover {color: #21c2d7; text-decoration: underline;}
@@ -26,10 +27,10 @@
 
         main {overflow: auto; margin: 0 0 30px;}
 
-        #posts div {display: flex; gap: 20px; flex-wrap: wrap;}
-        #posts div article {flex: 1 1 300px;}
+        #posts div, #categories ul {display: flex; gap: 20px; flex-wrap: wrap;}
+        #posts div article, #categories ul li {flex: 1 1 300px; list-style: none;}
         #posts div article h1 {margin: 0 0 10px;}
-        #posts div article a {text-decoration: none; color: #333}
+        #posts div article a, #categories ul li a {text-decoration: none; color: #333}
         #posts div article .link-default {text-decoration: none; color: #00defb}
         #posts div article .link-default:hover {text-decoration: underline; color: #3f9eab}
         #posts div article p:nth-child(2) {color: #666}
@@ -40,6 +41,8 @@
         #posts .others {margin: 30px 0 0}
         #posts .others article {flex: 1 1 200px;}
         #posts .others article h1 {font-size: 18pt}
+
+        #categories ul li:hover a {color: #3f9eab}
 
         /* .pagination {display: flex; margin-top: 30px}
         .pagination p {margin: 0 auto; text-align: center;}

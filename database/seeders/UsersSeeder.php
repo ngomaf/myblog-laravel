@@ -14,18 +14,18 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         User::create(
-            // [
-            //     'firstName' => 'Ngoma',
-            //     'lastName' => 'Tec',
-            //     'email' => 'ngomatec@gmail.com',
-            //     'password' => bcrypt('Ngoma123')
-            // ],
             [
-               'firstName' => 'Rosa',
-               'lastName' => 'Tec',
-               'email' => 'rosa.tec@mtec.ao',
-               'password' => bcrypt('Rosa123')
-           ], 
+                'firstName' => 'Ngoma',
+                'lastName' => 'Tec',
+                'email' => 'ngomatec@gmail.com',
+                'password' => bcrypt('Ngoma123')
+            ],
+        //     [
+        //        'firstName' => 'Rosa',
+        //        'lastName' => 'Tec',
+        //        'email' => 'rosa.tec@mtec.ao',
+        //        'password' => bcrypt('Rosa123')
+        //    ], 
         //    [
         //        'firstName' => 'Zany',
         //        'lastName' => 'Tec',

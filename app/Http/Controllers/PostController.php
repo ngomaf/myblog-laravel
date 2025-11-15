@@ -10,16 +10,17 @@ class PostController extends Controller
     public function index()
     {
         return view('site.posts', [
-            'pages' => Post::paginate(10)
+            'pages' => (new Post)->pager(10)
+            // 'pages' => Post::paginate(10)
         ]);
     }
 
-    public function show(string $slug)
+    public function show(string $slug): string
     {
-        $post = (new Post)->post($slug);
+        Post::where('slug', $slug)->increment('views');
         
         return view('site.post', [
-            'post' => $post
+            'post' => (new Post)->post($slug)
         ]);
     }
 }

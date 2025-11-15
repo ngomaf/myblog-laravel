@@ -1,7 +1,5 @@
-##
-Quando você fala em **“cortar frases” no Laravel**, existem algumas abordagens dependendo do que você quer fazer: limitar o número de **caracteres**, **palavras** ou criar **resumos** de textos para exibição, por exemplo, em listas ou previews de posts. Vou mostrar as opções mais comuns:
+## cortar frases” no Laravel
 
----
 
 ### 1️⃣ Usando **Str::limit()** para limitar caracteres
 
@@ -73,8 +71,79 @@ ou por palavras:
 
 ---
 
-Se você quiser, posso te mostrar **uma função que corta frases sem quebrar palavras no meio**, bem útil para textos longos e previews de posts.
+
+
+
+
+
+
+# limpar tags HTML e depois limitar o texto no Laravel
+
+
+# ✅ **1) Limpar tags HTML**
+
+Use a função nativa do PHP: [`strip_tags()`](https://www.php.net/manual/en/function.strip-tags.php)
+
+```php
+$textoLimpo = strip_tags($post->content);
+```
+
+Isso vai remover **todas as tags HTML** (`<h2>`, `<p>`, `<li>`, etc.), deixando apenas o texto puro.
+
+---
+
+# ✅ **2) Limitar o texto**
+
+O Laravel tem o helper **`Str::limit()`**:
+
+```php
+use Illuminate\Support\Str;
+
+$textoResumido = Str::limit($textoLimpo, 100); 
+// Limita para 100 caracteres e adiciona "..." por padrão
+```
+
+---
+
+# ✅ **3) Combinar tudo em uma linha**
+
+```php
+use Illuminate\Support\Str;
+
+$preview = Str::limit(strip_tags($post->content), 150);
+```
+
+* `strip_tags()` → remove HTML
+* `Str::limit()` → limita a quantidade de caracteres e adiciona `...`
+
+---
+
+# ✅ **4) Exemplo em Blade**
+
+```blade
+<p>{{ Str::limit(strip_tags($post->content), 200) }}</p>
+```
+
+Isso gera um **resumo do post**, seguro para exibir no HTML sem quebrar tags.
+
+---
+
+# 🔹 **Extra: preservar algumas tags**
+
+Se quiser remover tudo **menos algumas tags**, `strip_tags` aceita segundo parâmetro:
+
+```php
+$texto = strip_tags($post->content, '<p><a>');
+```
+
+* Preserva `<p>` e `<a>`
+* Remove todas as outras tags
+
+---
+
+Se você quiser, posso te mostrar um **helper pronto** que **gera um resumo seguro de qualquer conteúdo HTML**, limitando por palavras ou caracteres. Isso é ótimo para resumos de posts ou notícias.
 
 Quer que eu faça isso?
+
 
 
