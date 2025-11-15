@@ -13,7 +13,7 @@
                 @foreach ($posts4 as $post)
                     <article>
                         <a href="/{{ $post->slug }}"><h1>{{ \Illuminate\Support\Str::limit($post->title, 50) }}</h1></a>
-                        <p><span>by</span> <a class="link-default" href="/autor/{{ $post->user_id }}">{{ $post->firstName }}</a> | {{ date('d.m.Y', strtotime($post->created_at)) }} | {{ number_format($post->views, 0, ',', '.') }}</p>
+                        <p><span>by</span> <a class="link-default" href="/autor/{{ $post->user_id }}">{{ $post->firstName }}</a> | {{ date('d.m.Y', strtotime($post->created_at)) }} | {{ number_format($post->views, 0, ',', '.') }} views</p>
                         <a href="/{{ $post->slug }}"><p>{{ $post->title }}.</p></a>
                     </article>
                 @endforeach

@@ -14,7 +14,7 @@
                     <article>
                         <a href="/{{ $post->slug }}">
                             <h1>{{ \Illuminate\Support\Str::limit($post->title, 50) }}</h1>
-                            <p>{{ $post->created_at->format('d M Y') }} | {{ number_format($post->views, 0, ',', '.') }}</p>
+                            <p>{{ $post->created_at->format('d M Y') }} | {{ number_format($post->views, 0, ',', '.') }} views</p>
                             <p>{{ $post->title }}</p>
                         </a>
                     </article>

@@ -16,7 +16,10 @@ class PostController extends Controller
 
     public function show(string $slug)
     {
-        $post = Post::with('category')->find(1);
-        dd($post);
+        $post = (new Post)->post($slug);
+        
+        return view('site.post', [
+            'post' => $post
+        ]);
     }
 }
