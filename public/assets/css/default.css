@@ -162,7 +162,9 @@ section > h2 {
     color: var(--link-03);
 }
 #posts div article p:nth-child(2) {
-    color: #666
+    color: #666;
+    font-size: 11pt;
+    margin: 3px;
 }
 #posts div article:hover p:nth-child(2) {
     color: var(--link-03);

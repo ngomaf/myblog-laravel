@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
@@ -19,3 +20,5 @@ Route::get('/artigo/{post}', function(string $post) {
 });
 
 Route::get('/categoria/{category}', [CategoryController::class, 'show'])->name('category.show');
+
+Route::get('/autor/{userID}', [AuthorController::class, 'show'])->name('author.show');
