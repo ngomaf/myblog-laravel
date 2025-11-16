@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->boolean('state');
-            $table->text('content');
+            $table->longText('content');
+            // $table->text('content');
             $table->integer('views');
 
             $table->unsignedBigInteger('id_user');

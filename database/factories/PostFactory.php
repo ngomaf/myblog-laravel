@@ -36,9 +36,10 @@ class PostFactory extends Factory
     private function generateHtmlContent()
     {
         $html = "";
+        $tot = random_int(2,5);
 
         // Criar 3 seções
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < $tot; $i++) {
             $html .= "<h2>" . $this->faker->sentence() . "</h2>";
             $html .= "<p>" . $this->faker->text . "</p>";
             $html .= "<p>" . $this->faker->text . "</p>";

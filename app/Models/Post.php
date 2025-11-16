@@ -60,6 +60,25 @@ class Post extends Model
             ->paginate($tam);
     }
 
+    public function postsByCat(string $slug, int $tam = 10): object
+    {
+        return DB::table('posts')
+            ->join('users', 'posts.id_user', '=', 'users.id')
+            ->join('categories', 'posts.id_category', '=', 'categories.id')
+            ->select(
+                'posts.*', 
+                'users.id as user_id', 
+                'users.firstName', 
+                'users.lastName', 
+                'users.email', 
+                'categories.name as cat_name', 
+                'categories.slug as cat_slug'
+            )
+            ->where('categories.slug', '=', $slug)
+            ->orderBy('posts.created_at', 'desc')
+            ->paginate($tam);
+    }
+
     public function post(string $slug)
     {
         return DB::table('posts')
