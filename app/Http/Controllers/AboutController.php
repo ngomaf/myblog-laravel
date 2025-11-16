@@ -12,10 +12,10 @@ class AboutController extends Controller
     public function index(): object
     {
         return view('site.about', [
-            'totPosts' => Post::count(),
+            'totPosts' => Post::where('state', 1)->count(),
             'totCats' => Category::count(),
             'totAuthors' => User::count(),
-            'totViews' => Post::sum('views'),
+            'totViews' => Post::where('state', true)->sum('views'),
         ]);
     }
 }

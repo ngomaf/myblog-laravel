@@ -59,9 +59,9 @@
                         <td>{{ number_format($totViews, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
-                        <td>G</td>
-                        <td>Logo</td>
+                        <td></td>
                         <td><img @style("width=10px") src="{{ asset('fortwork_250.png') }}" alt="logo"></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

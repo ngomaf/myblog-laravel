@@ -39,8 +39,18 @@
             </ul>
         </section>
 
-        <section id="photos">
+        <section id="categories">
             <h2>Fotos</h2>
+
+            <ul>
+                @foreach ($categories as $category)
+                    <li><img @style("width=100%") src="{{ asset('fortwork_250.png') }}" alt="logo"></li>
+                @endforeach
+                <li><img @style("width=100%") src="{{ asset('fortwork_250.png') }}" alt="logo"></li>
+            </ul>
+        </section>
+
+        <section id="photos">
         </section>
 
 @endsection

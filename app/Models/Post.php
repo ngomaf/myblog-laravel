@@ -56,6 +56,7 @@ class Post extends Model
                 'categories.name as cat_name', 
                 'categories.slug as cat_slug'
             )
+            ->where('posts.state', '=', 1)
             ->orderBy('posts.created_at', 'desc')
             ->paginate($tam);
     }
@@ -74,6 +75,7 @@ class Post extends Model
                 'categories.name as cat_name', 
                 'categories.slug as cat_slug'
             )
+            ->where('posts.state', '=', 1)
             ->where('categories.slug', '=', $slug)
             ->orderBy('posts.created_at', 'desc')
             ->paginate($tam);
