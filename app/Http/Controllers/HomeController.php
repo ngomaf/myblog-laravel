@@ -10,11 +10,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // dd(CategoryHelper::getCat());
+        $categorias = (new Category)->getCategoriesWithCount();
 
         return view('site.home', [
             'posts4' => (new Post)->posts4(),
-            'categories' => Category::all()
+            'categories' => $categorias
         ]);        
     }
 }

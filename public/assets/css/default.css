@@ -1,0 +1,283 @@
+
+/* setting color */
+:root {
+    --black: #333;
+    --black-soft: #ccc;
+    --black-light: #f1f1f1;
+    --black-page-disable: #6c757d;
+
+    --link: #00defb;
+    --link-hover: #21c2d7;
+    --link-02: #0f7987;
+    --link-03: #3f9eab;
+
+    --link-page: #007bff;
+    --link-page-soft: #dee2e6;
+    --link-page-light: #f8f9fa;
+}
+
+
+
+*{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px 50px 50px; 
+    line-height: 30px; color: var(--black);; 
+    font: normal 12pt "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+h1, h2 {
+    margin: 25px 0 10px;
+}
+h3 {
+    margin: 20px 0 8px;
+}
+p, li {
+    margin-bottom: 10px; 
+    line-height: 25px;
+}
+a, 
+.link-default {
+    color: var(--link);
+}
+a:hover, .link-default:hover {
+    color: var(--link-hover); 
+    text-decoration: underline;
+}
+
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+header h1 {
+    margin: 0;
+}
+header h1 a {
+    text-decoration: none; 
+    color: var(--black);;
+}
+header h1:hover a {
+    text-decoration: underline; 
+    color: var(--black);;
+}
+
+header ul {
+    display: flex; list-style: none;
+}
+header nav ul li:nth-child(3) {
+    position: relative;
+}
+header nav ul li:nth-child(3):hover a + ul  {
+    display: block; /* ocultar/mostar menu */
+} 
+header nav ul li:nth-child(3) > a::after {
+    content: ' +';
+}
+header ul a {
+    display: block; 
+    padding: 20px; 
+    color: var(--link-02); 
+    text-decoration: none
+}
+header ul a:hover {
+    text-decoration: underline;
+}
+
+header ul ul {
+    display: block; 
+    padding: 10px 5px; 
+    border-radius: 5px; 
+    background: var(--black-light); 
+    position: absolute; 
+    left: -25%; 
+    width: 150%; 
+    display: none;
+}
+header ul ul li:nth-child(3) {
+    position: relative; 
+    background: var(--black-light);
+}
+header ul ul li:nth-child(3) > a::after {
+    content: '';
+}
+header ul ul a {
+    display: inline; 
+    padding: 5px 20px;
+}
+
+main {
+    overflow: auto; 
+    margin: 0 0 30px;
+}
+
+main section:nth-child(n+2) {
+    padding-top: 30px; 
+    margin-top: 30px; 
+    border-top: 1px solid var(--black-soft);
+}
+main section:nth-child(n+2) > h2 {
+    margin-top: 0
+}
+
+section > h2 {
+    margin: 20px 0;
+}
+
+#posts div, #categories ul {
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap;
+}
+#posts div article, #categories ul li {
+    flex: 1 1 350px; list-style: none;
+}
+
+@media(min-width: 1190px) {
+    #posts div article {
+        flex: 1 1 22%; list-style: none;
+    }
+    #categories ul li {
+        flex: 1 1 26%; list-style: none;
+    }
+    
+}
+
+#posts div article h1 {
+    margin: 0 0 10px;
+}
+#posts div article a, #categories ul li a {
+    text-decoration: none; 
+    color: var(--black);
+}
+#posts div article .link-default {
+    text-decoration: none; 
+    color: var(--link)
+}
+#posts div article .link-default:hover {
+    text-decoration: underline; 
+    color: var(--link-03);
+}
+#posts div article p:nth-child(2) {
+    color: #666
+}
+#posts div article:hover p:nth-child(2) {
+    color: var(--link-03);
+}
+#posts div article:hover h1,
+#posts div article:hover p:last-child {
+    color: var(--link-02)
+}
+
+#posts .others {
+    margin: 30px 0 0
+}
+#posts .others article {
+    flex: 1 1 200px;
+}
+#posts .others article h1 {
+    font-size: 18pt
+}
+
+#categories ul li:hover a {
+    color: var(--link-03);
+}
+
+/* .pagination {
+    display: flex; 
+    margin-top: 30px
+}
+.pagination p {
+    margin: 0 auto; 
+    text-align: center;
+}
+.pagination a {
+    text-decoration: none; 
+    margin: 5px; 
+    font-size: 16pt; 
+    font-weight: bold; 
+    display: inline-block; 
+    width: 40px; height: 40px; 
+    background: var(--link); 
+    color: var(--link-02); 
+    border-radius: 50%; 
+    padding: 7px 0 0
+}
+.pagination a:hover {
+    background: var(--link-02); color: #fff;
+} */
+
+/* table */
+.tb-default {
+    border-collapse: collapse;
+}
+.tb-default caption {
+    font-size: 18pt; 
+    text-align: left;
+}
+.tb-default thead tr {
+    border-bottom: 1px solid var(--link-02);
+}
+.tb-default tbody tr:nth-child(2n-1) {
+    background-color: var(--black-light);
+}
+.tb-default td {
+    padding: 5px; 
+    font-size: 14pt;
+}
+.tb-default thead td {
+    font-weight: 600;
+}
+.tb-default a {
+    text-decoration: none;
+}
+
+/* pagination */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 8px; /* Espaçamento entre os links */
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Cada item da paginação */
+/* .pagination li {
+} */
+
+/* Links da paginação */
+.pagination li a,
+.pagination li span {
+    display: block;
+    padding: 8px 12px;
+    color: var(--link-page); /* Azul padrão */
+    text-decoration: none;
+    border: 1px solid var(--link-page-soft);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Hover nos links */
+.pagination li a:hover {
+    background-color: var(--link-page);
+    color: #fff;
+}
+
+/* Página ativa */
+.pagination li.active span {
+    background-color: var(--link-page);
+    color: #fff;
+    border-color: var(--link-page);
+}
+
+/* Desabilitado (não clicável) */
+.pagination li.disabled span {
+    color: var(--black-page-disable);
+    cursor: not-allowed;
+    background-color: var(--link-page-light);
+    border-color: var(--link-page-soft);
+}

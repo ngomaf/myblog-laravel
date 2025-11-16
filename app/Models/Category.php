@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Category extends Model
 {
@@ -16,5 +17,14 @@ class Category extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function getCategoriesWithCount()
+    {
+        return  DB::table('categories')
+            ->leftJoin('posts', 'categories.id', '=', 'posts.id_category')
+            ->select('categories.id', 'categories.name', 'categories.slug', 'categories.description', DB::raw('COUNT(posts.id) as total_posts'))
+            ->groupBy('categories.id', 'categories.name', 'categories.slug', 'categories.description')
+            ->get();
     }
 }
